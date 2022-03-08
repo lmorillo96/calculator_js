@@ -1,7 +1,7 @@
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement,
-        this.currentOperandButtons = currentOperandTextElement,
+        this.currentOperandTextElement = currentOperandTextElement,
         this.clear()
     }
 
@@ -31,7 +31,7 @@ class Calculator {
     }
 
     compute() {
-        let computation
+        let computation;
         const prev = parseFloat(this.previousOperand)
         const current = parseFloat(this.currentOperand)
         if (isNaN(prev) || isNaN(current)) return
@@ -61,7 +61,7 @@ class Calculator {
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
         let integerDisplay
-        if (inNan(integerDigits)) {
+        if (isNaN(integerDigits)) {
             integerDisplay = ''
         } else {
             integerDisplay = integerDigits.toLocaleString('en', {maximumFractionDigits: 0 })
@@ -74,11 +74,9 @@ class Calculator {
     }
 
     updateDisplay() {
-        this.currentOperandTextElement.innerText =
-          this.getDisplayNumber(this.currentOperand)
+        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
         if (this.operation != null) {
-          this.previousOperandTextElement.innerText =
-            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
         } else {
           this.previousOperandTextElement.innerText = ''
         }
@@ -104,7 +102,7 @@ numberButton.forEach(button => {
     })
 })
 
-operationButtons.forEach(button => {
+operationButton.forEach(button => {
     button.addEventListener('click', () => {
       calculator.chooseOperation(button.innerText)
       calculator.updateDisplay()
