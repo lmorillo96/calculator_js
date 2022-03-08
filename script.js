@@ -1,3 +1,4 @@
+// Clases funcionamiento Calculator
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement,
@@ -83,6 +84,7 @@ class Calculator {
       }
 }
 
+// Asignación elementos del DOM
 
 const numberButton = document.querySelectorAll('[data-number]')
 const operationButton = document.querySelectorAll('[data-operation]')
